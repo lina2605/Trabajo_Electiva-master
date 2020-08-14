@@ -19,19 +19,49 @@ function indexSerie(req,res){
         return res.send({error: err.toString()});
     })
 }
+
+function findSerie(req,res,next){
+    var query ={};
+    query[req.params.key] = req.params.value;
+    Serie.find({query},(series)=>{
+        if(!series.length){
+            return next();
+        }
+        req.body.series = series;
+        return next();
+    }).catch(err =>{
+        req.body.error = err;
+        netx();
+    })       
+}
+
 function updateSerie(req,res){
 
 }
+
 function showSerie(req,res){
+    if(req.body.error){
+        return res.send({error});
+    }
+    if(req.body.series){
+        return res.send({series})
+    }
+    return res.send({message: "No se encontro"});
+}
+
+
+function deleteSerie(req,res){
 
 }
 function deleteSerie(req,res){
 
 }
 
+
 module.exports.createSerie = createSerie;
 module.exports.indexSerie = indexSerie;
 module.exports.deleteSerie = deleteSerie;
 module.exports.updateSerie = updateSerie;
 module.exports.showSerie = showSerie;
+module.exports.findSerie = findSerie;
 
