@@ -40,7 +40,7 @@ function updateSerie(req,res){
 }
 
 function showSerie(req,res){
-    if(!req.body.series) return res.send({message: 'NOT FOUND'});
+    if(!req.body.series) return res.send({message: 'No se encuentra el objeto con los datos especificados'});
     let series = req.body.series;
     return res.send({series});
 }
