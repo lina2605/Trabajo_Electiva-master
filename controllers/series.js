@@ -29,9 +29,15 @@ function findSerie(req,res,next){
         req.body.series = series;
         return next();
     }).catch(err =>{
+<<<<<<< HEAD
        req.body.error = err;
         netx();
     })     
+=======
+        req.body.error = err;
+        netx();
+    })       
+>>>>>>> 5638a8806165dd7d8b772246d49d63a585557b4a
 }
 
 function updateSerie(req,res){
@@ -48,6 +54,7 @@ function showSerie(req,res){
     return res.send({message: "No se encontro"});
 }
 
+<<<<<<< HEAD
 /*function showSerie(req,res){
     if(req.body.error) return res.status(500).send({error});
     if(!req.body.series) return res.status(404).send({message: "No encontrado"});
@@ -56,6 +63,8 @@ function showSerie(req,res){
 
 }*/
 
+=======
+>>>>>>> 5638a8806165dd7d8b772246d49d63a585557b4a
 
 function deleteSerie(req,res){
 
@@ -71,8 +80,11 @@ module.exports.deleteSerie = deleteSerie;
 module.exports.updateSerie = updateSerie;
 module.exports.showSerie = showSerie;
 module.exports.findSerie = findSerie;
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 5638a8806165dd7d8b772246d49d63a585557b4a
 
