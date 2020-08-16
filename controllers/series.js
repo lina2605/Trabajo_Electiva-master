@@ -13,7 +13,7 @@ function createSerie(req,res){
 
 function indexSerie(req,res){
     Serie.find((err,result)=>{
-        if(result.length){
+        if(!result.length){
             return res.send(result);
         }
         return res.send({error: err.toString()});
@@ -21,18 +21,18 @@ function indexSerie(req,res){
 }
 
 function findSerie(req,res,next){
-    var query ={};
+    let query = {};
     query[req.params.key] = req.params.value;
-    Serie.find({query},(series)=>{
-        if(!series.length){
-            return next();
+ Serie.find(query,(err,series) =>{  
+     if(err){
+        return res.send({error: err.toString()});
+     }    
+        if(!series.length){          
+            return next();            
         }
         req.body.series = series;
         return next();
-    }).catch(err =>{
-        req.body.error = err;
-        netx();
-    })       
+    })
 }
 
 function updateSerie(req,res){
@@ -40,13 +40,9 @@ function updateSerie(req,res){
 }
 
 function showSerie(req,res){
-    if(req.body.error){
-        return res.send({error});
-    }
-    if(req.body.series){
-        return res.send({series})
-    }
-    return res.send({message: "No se encontro"});
+    if(!req.body.series) return res.send({message: 'NOT FOUND'});
+    let series = req.body.series;
+    return res.send({series});
 }
 
 
