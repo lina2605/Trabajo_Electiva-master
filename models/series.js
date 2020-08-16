@@ -8,36 +8,36 @@ const seriesSchema = new Schema({
 		unique: true
 	},
 	titulo:{
-        type: String,
-        required:true
+        type: String
+        //required:true
     },
     director:{ 
-		type: String,
-		required:true
+		type: String
+		//required:true
     },
     capitulos:{
-		type: Number,
-		required:true
+		type: Number
+		//required:true
 	},
 	actores:{  // objeto actores
 		nombre: String,  
 		apellidos: String,
 		edad: Number,
-        ciudad: String,
+        ciudad: String
         //required: true
     },
     genero:{
 		type: String,
-		enum: ['Drama','Fantasia','Ciencia Ficcion','Comedia','Accion','Terror','Suspenso'],
-		required:true 
+		enum: ['Drama','Fantasia','Ciencia Ficcion','Comedia','Accion','Terror','Suspenso']
+		//required:true 
 	},
 	calificacion_usuario:{
-		type: String,
-		required:true
+		type: String
+		//required:true
 	},
 	resumen:{
-		type: String,
-		required:true
+		type: String
+		//required:true
     },
     temporadas:{ // objeto temporadas
         numeroTemporadas: Number,
